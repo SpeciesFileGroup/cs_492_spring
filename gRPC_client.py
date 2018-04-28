@@ -5,7 +5,7 @@ import grpc
 import my_service_pb2 as my_service_pb2
 import my_service_pb2_grpc as my_service_pb2_grpc
 from visualization import Visualization
-
+#integration with GRPC
 class gRPCClient():
     def __init__(self):
         channel = grpc.insecure_channel('localhost:50051')
