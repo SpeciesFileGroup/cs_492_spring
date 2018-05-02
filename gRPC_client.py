@@ -56,9 +56,11 @@ def main():
     page_count = client.method2(number_of_pages).count
     res = client.query_stream(queryPages(page_count, number_of_pages))
 
+    count = 0
     for re in res:
-        viz = Visualization(tile_number = 1, tile_width = 100, tile_height = 100, data_list = zip(re.page_names, re.page_count))
+        viz = Visualization(tile_number = count, tile_width = 100, tile_height = 100, data_list = list(zip(re.page_names, re.page_count)))
         viz.visualize_data()
+        count += 1
 
 if __name__ == '__main__':
     main()

@@ -52,4 +52,4 @@ class Visualization(object):
 
 		trace = go.Heatmap(z = counts_list, x = x, y = y, hoverinfo = 'text', text = hovertext, colorscale = 'Greys')
 		data = [trace]
-		py_offline.plot(data, filename = 'tile'+str(self.tile_number)+'.html', auto_open = False)
+		py_offline.plot(data, filename = './tiles/tile'+str(self.tile_number)+'.html', auto_open = False)
