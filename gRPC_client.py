@@ -1,5 +1,6 @@
 import random
 import time
+import sys
 import os
 import grpc
 import my_service_pb2 as my_service_pb2
@@ -52,6 +53,9 @@ def queryPages(page_count, number_of_pages):
 
 def main():
     number_of_pages = 10000
+    if len(sys.argv[1:]):
+        number_of_pages = int(sys.argv[1])
+
     client = gRPCClient()
     page_count = client.method2(number_of_pages).count
     res = client.query_stream(queryPages(page_count, number_of_pages))
