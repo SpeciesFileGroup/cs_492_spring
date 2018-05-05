@@ -5,7 +5,10 @@ import os
 import grpc
 import my_service_pb2 as my_service_pb2
 import my_service_pb2_grpc as my_service_pb2_grpc
+import math
 from visualization import Visualization
+
+
 #integration with GRPC
 class gRPCClient():
     def __init__(self):
@@ -17,7 +20,7 @@ class gRPCClient():
         return self.stub.MyMethod1(my_service_pb2.MyRequest(filename=filename, count=count))
 
     def method2(self, number_of_pages):
-        print('method 2')
+        print('Counting number of pages...')
         return self.stub.MyMethod2(my_service_pb2.InitialRequest(number_of_pages=number_of_pages))
 
     def method3(self, req):
@@ -25,22 +28,8 @@ class gRPCClient():
         return self.stub.MyMethod3(req)
 
     def query_stream(self, req):
-        print('query_stream')
+        print('Streaming response back...')
         return self.stub.MyMethod4(req)
-
-
-def generateRequests():
-    reqs = []
-
-    for filename in os.listdir("data"):
-        lines = [line.rstrip('\n\r') for line in open('data/' + filename)]
-        if len(lines) == 0:
-            continue
-        reqs.append(my_service_pb2.MyRequest(filename=filename, filetext=lines[0], count=123))
-
-    for req in reqs:
-        yield req
-
 
 def queryPages(page_count, number_of_pages):  
     reqs = []
@@ -49,7 +38,6 @@ def queryPages(page_count, number_of_pages):
 
     for req in reqs:
         yield req
-
 
 def main():
     number_of_pages = 10000

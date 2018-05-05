@@ -44,7 +44,6 @@ class Visualization(object):
 		counts_list = counts_list.reshape((self.tile_width, self.tile_height))
 		files_list = files_list.reshape((self.tile_width, self.tile_height))
 
-		pprint(counts_list)
 		for yi, yy in enumerate(y):
 			hovertext.append(list())
 			for xi, xx in enumerate(x):

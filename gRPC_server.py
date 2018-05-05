@@ -1,7 +1,6 @@
 import time
 from concurrent import futures
 import grpc
-import my_module
 import my_service_pb2 as my_service_pb2
 import my_service_pb2_grpc as my_service_pb2_grpc
 import psycopg2
@@ -13,7 +12,7 @@ number_of_pages = 1
 
 class gRPCServer(my_service_pb2_grpc.MyServiceServicer):
     def __init__(self):
-        print('initialization')
+        print('Initializating server...')
 
     def MyMethod1(self, request, context):
         print(request.filename)
@@ -49,7 +48,6 @@ class gRPCServer(my_service_pb2_grpc.MyServiceServicer):
         
 
 def serve():
-    print("hello world")
     try:
         global conn
         conn = psycopg2.connect(database="bhlindex", user="bhl", password="grpc2BHL", host="172.22.247.14", port ="5432")

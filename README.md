@@ -13,7 +13,7 @@ Then start the GRPC client in a new terminal:
 ```
 python gRPC_client.py
 ```
-You can also pass in the number of pages in each tile as a argument, for example, including 10000 pages in each tile:
+You can also pass in the number of pages in each tile as a argument, for example, including 10000 pages in each tile (This is the deafult number - thus the tile sizes by default are 100 by 100)
 ```
 python gRPC_client.py 10000
 ```
